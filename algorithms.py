@@ -143,9 +143,7 @@ def unique_front(pop):
     return list(uniq.values())
 
 
-# -----------------------------
-# NSGA-II
-# -----------------------------
+# ----- NSGA-II ------
 
 def non_dominated_sort(pop):
     n = len(pop)
@@ -402,9 +400,7 @@ def nsga2(
     return unique_front(pop)
 
 
-# -----------------------------
-# SPEA2
-# -----------------------------
+# ----- SPEA2 ------
 
 def norm_obj(pop):
     f1 = [
