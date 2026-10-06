@@ -83,18 +83,10 @@ def run_alg(
 
         fr = nsga2(
             p=p,
-            pop_size=cfg[
-                "pop_size"
-            ],
-            max_evals=cfg[
-                "max_evals"
-            ],
-            cx_p=cfg[
-                "cx_p"
-            ],
-            mut_p=cfg[
-                "mut_p"
-            ],
+            pop_size=cfg["pop_size"],
+            max_evals=cfg["max_evals"],
+            cx_p=cfg["cx_p"],
+            mut_p=cfg["mut_p"],
             seed=seed
         )
 
@@ -102,18 +94,10 @@ def run_alg(
 
         fr = spea2(
             p=p,
-            pop_size=cfg[
-                "pop_size"
-            ],
-            max_evals=cfg[
-                "max_evals"
-            ],
-            cx_p=cfg[
-                "cx_p"
-            ],
-            mut_p=cfg[
-                "mut_p"
-            ],
+            pop_size=cfg["pop_size"],
+            max_evals=cfg["max_evals"],
+            cx_p=cfg["cx_p"],
+            mut_p=cfg["mut_p"],
             seed=seed
         )
 
@@ -127,16 +111,16 @@ def run_alg(
         - start
     )
 
-    pts = [
-        ind.obj
-        for ind in fr
-    ]
-
-    return pts, t
+    return fr, t
 
 
 def main():
     recs = []
+
+    os.makedirs(
+        "output",
+        exist_ok=True
+    )
 
     for cat, ins_list in INS.items():
 
@@ -190,6 +174,70 @@ def main():
                             seed
                         )
 
+                        pts = [
+                            ind.obj
+                            for ind in fr
+                        ]
+
+                        if (
+                            ins == "cap61"
+                            and cfg_name == "P2"
+                            and run == 1
+                            and alg == "NSGA-II"
+                        ):
+                            ex = fr[0]
+
+                            print(
+                                "\nExample encoded individual:"
+                            )
+
+                            print(
+                                "Chromosome:",
+                                ex.ch
+                            )
+
+                            print(
+                                "Objectives:",
+                                ex.obj
+                            )
+
+                            with open(
+                                "output/example_chromosome.txt",
+                                "w"
+                            ) as f:
+
+                                f.write(
+                                    f"Instance: {ins}\n"
+                                )
+
+                                f.write(
+                                    f"Config: {cfg_name}\n"
+                                )
+
+                                f.write(
+                                    f"Algorithm: {alg}\n"
+                                )
+
+                                f.write(
+                                    f"Run: {run}\n"
+                                )
+
+                                f.write(
+                                    f"Seed: {seed}\n"
+                                )
+
+                                f.write(
+                                    f"Chromosome: {ex.ch}\n"
+                                )
+
+                                f.write(
+                                    f"f1: {ex.obj[0]:.3f}\n"
+                                )
+
+                                f.write(
+                                    f"f2: {ex.obj[1]:.3f}\n"
+                                )
+
                         recs.append({
                             "cat": cat,
                             "ins": ins,
@@ -197,7 +245,7 @@ def main():
                             "alg": alg,
                             "run": run,
                             "seed": seed,
-                            "fr": fr,
+                            "fr": pts,
                             "t": t
                         })
 

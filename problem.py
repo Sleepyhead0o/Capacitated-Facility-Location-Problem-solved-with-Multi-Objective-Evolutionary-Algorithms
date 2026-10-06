@@ -245,7 +245,7 @@ def eval_obj(ch, p):
             "for an infeasible solution."
         )
 
-    open_f = set(ch)
+    open_f = set(ch)        # Open facilities
 
     f1 = sum(
         p.fc[f]

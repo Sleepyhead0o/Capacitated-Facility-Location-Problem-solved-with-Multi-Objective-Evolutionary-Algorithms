@@ -31,7 +31,7 @@ def make_pop(p, n, rng):
     pop = []
 
     for _ in range(n):
-        ch = make_ch(p, rng)
+        ch = make_ch(p, rng) # makes the chromomes 
 
         ind = Ind(ch)
 
