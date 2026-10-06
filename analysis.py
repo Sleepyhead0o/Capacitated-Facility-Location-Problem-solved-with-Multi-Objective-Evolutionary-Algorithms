@@ -319,9 +319,9 @@ def save_runs(recs, path):
                 r["alg"],
                 r["run"],
                 r["seed"],
-                r["hv"],
+                f"{r['hv']:.3f}",
                 r["nd"],
-                r["t"]
+                f"{r['t']:.3f}"
             ])
 
 
@@ -398,12 +398,12 @@ def save_summary(summ, path):
                 r["ins"],
                 r["cfg"],
                 r["alg"],
-                r["mean_hv"],
-                r["std_hv"],
-                r["best_hv"],
-                r["worst_hv"],
-                r["mean_nd"],
-                r["mean_t"]
+                f"{r['mean_hv']:.3f}",
+                f"{r['std_hv']:.3f}",
+                f"{r['best_hv']:.3f}",
+                f"{r['worst_hv']:.3f}",
+                f"{r['mean_nd']:.3f}",
+                f"{r['mean_t']:.3f}"
             ])
 
 
@@ -435,8 +435,8 @@ def save_tests(tests, path):
                 r["ins"],
                 r["cfg"],
                 r["test"],
-                r["stat"],
-                r["p"]
+                f"{r['stat']:.3f}",
+                f"{r['p']:.3f}"
             ])
 
 
