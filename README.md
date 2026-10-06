@@ -11,6 +11,6 @@ cd Capacitated-Facility-Location-Problem-solved-with-Multi-Objective-Evolutionar
 
 conda env create -f env.yml <br/>
 
-conda activate cflp-moea <br/>
+conda activate moea-cflp <br/>
 
 python main.py <br/>
