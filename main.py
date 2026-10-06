@@ -201,8 +201,23 @@ def main():
                                 ex.obj
                             )
 
+                            print(
+                                "Rank:",
+                                ex.rank
+                            )
+
+                            print(
+                                "Crowding distance:",
+                                ex.crowd
+                            )
+
+                            print(
+                                "Fitness:",
+                                ex.fit
+                            )
+
                             with open(
-                                "output/example_chromosome.txt",
+                                "output/example_individual.txt",
                                 "w"
                             ) as f:
 
@@ -223,19 +238,37 @@ def main():
                                 )
 
                                 f.write(
-                                    f"Seed: {seed}\n"
+                                    f"Seed: {seed}\n\n"
                                 )
 
                                 f.write(
-                                    f"Chromosome: {ex.ch}\n"
+                                    "Encoded individual:\n"
                                 )
 
                                 f.write(
-                                    f"f1: {ex.obj[0]:.3f}\n"
+                                    f"Chromosome: "
+                                    f"{ex.ch}\n"
                                 )
 
                                 f.write(
-                                    f"f2: {ex.obj[1]:.3f}\n"
+                                    f"Objectives: "
+                                    f"({ex.obj[0]:.3f}, "
+                                    f"{ex.obj[1]:.3f})\n"
+                                )
+
+                                f.write(
+                                    f"Rank: "
+                                    f"{ex.rank}\n"
+                                )
+
+                                f.write(
+                                    f"Crowding distance: "
+                                    f"{ex.crowd:.3f}\n"
+                                )
+
+                                f.write(
+                                    f"Fitness: "
+                                    f"{ex.fit:.3f}\n"
                                 )
 
                         recs.append({
