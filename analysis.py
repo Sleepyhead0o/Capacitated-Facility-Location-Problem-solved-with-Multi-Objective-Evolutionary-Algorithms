@@ -359,8 +359,8 @@ def save_fronts(recs, path):
                     r["cfg"],
                     r["alg"],
                     r["run"],
-                    f1,
-                    f2
+                    f"{f1:.3f}",
+                    f"{f2:.3f}"
                 ])
 
 
